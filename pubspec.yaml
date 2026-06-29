@@ -1,0 +1,56 @@
+name: project_time
+description: "Project Time — a local-first, offline multi-project time tracker."
+publish_to: "none"
+
+# Bump the build number (the part after +) on every release.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod: ^2.6.1
+
+  # Local database (SQLite)
+  drift: ^2.20.0
+  sqlite3_flutter_libs: ^0.5.24
+  path_provider: ^2.1.4
+  path: ^1.9.0
+
+  # Navigation
+  go_router: ^14.2.7
+
+  # Charts
+  fl_chart: ^0.69.0
+
+  # Utilities
+  uuid: ^4.4.2
+  intl: ^0.19.0
+
+  # Files / sharing / notifications / device info
+  file_picker: ^8.1.2
+  share_plus: ^10.0.2
+  flutter_local_notifications: ^17.2.3
+  package_info_plus: ^8.0.2
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+
+  flutter_lints: ^4.0.0
+
+  # Code generation for Drift
+  build_runner: ^2.4.13
+  drift_dev: ^2.20.0
+
+flutter:
+  uses-material-design: true

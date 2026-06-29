@@ -1,0 +1,11 @@
+# Drift code generation configuration.
+# Run: dart run build_runner build --delete-conflicting-outputs
+targets:
+  $default:
+    builders:
+      drift_dev:
+        options:
+          # Store DateTime values as ISO-8601 UTC text for portable, ordered
+          # range queries.
+          store_date_time_values_as_text: true
+          named_parameters: true
