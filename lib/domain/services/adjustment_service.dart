@@ -117,20 +117,20 @@ class AdjustmentService {
       final state = await _db.timerDao.getByProject(projectId);
 
       // Finalize a running segment so it is counted before resetting.
+      final runningStart = state?.runningStartedAtUtc;
       if (state != null &&
           state.status == TimerStatus.running &&
-          state.runningStartedAtUtc != null) {
-        final seconds =
-            now.difference(state.runningStartedAtUtc!).inSeconds;
+          runningStart != null) {
+        final seconds = now.difference(runningStart).inSeconds;
         if (seconds > 0) {
           await _db.timeEntriesDao.insertEntry(TimeEntriesCompanion(
             id: Value(_ids.newId()),
             projectId: Value(projectId),
             entryType: const Value(EntryType.timerSegment),
             signedDurationSeconds: Value(seconds),
-            startedAtUtc: Value(state.runningStartedAtUtc),
+            startedAtUtc: Value(runningStart),
             endedAtUtc: Value(now),
-            effectiveAtUtc: Value(state.runningStartedAtUtc),
+            effectiveAtUtc: Value(runningStart),
             createdAtUtc: Value(now),
           ));
         }
