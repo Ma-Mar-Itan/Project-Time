@@ -88,7 +88,7 @@ class AppTheme {
           color: colorScheme.onSurface,
         ),
       ),
-      cardTheme: CardThemeData(
+      cardTheme: CardTheme(
         elevation: 0,
         margin: EdgeInsets.zero,
         color: isDark ? AppColors.darkSurface : AppColors.background,
